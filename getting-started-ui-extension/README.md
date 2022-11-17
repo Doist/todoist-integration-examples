@@ -1,6 +1,6 @@
-# Getting Started
+# Getting Started UI Extension
 
-Simple UI extension that greets the user and ask them to click a button.
+Simple integration that includes one project context menu UI extension that greets the user and ask them to click a button.
 
 You can build this UI extension, step-by-step, by following our official [Getting Started guide](https://developer.todoist.com/ui-extensions#getting-started).
 
@@ -31,7 +31,7 @@ Take note of the URL exposed by your tool of choice, as you'll need it in the ne
 
 ## Create a Todoist App
 
-1. Visit the [App Management Console](/appconsole.html) (you'll be prompted to log in if you're not already)
+1. Visit the [App Management Console](https://todost.com/app_console) (you'll be prompted to log in if you're not already)
 2. Click "Create a new App" and insert a name in the "App name" field (i.e. "My first app")
 3. In the `UI Extensions` section, click "Add a new UI extension" (it should look like the screenshot on the right):
     * Give it a name (i.e. "Greet me!")

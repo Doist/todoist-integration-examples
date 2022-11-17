@@ -1,8 +1,15 @@
-# lorem-ipsum
+# Lorem Ipsum UI Extension
 
-TODO
+// TODO THIS NEEDS TO BE UPDATED, NOT READY FOR REVIEW
 
-## Local environment variables
+Simple integration that includes different UI extensions:
+1. Project context menu UI extension to add tasks to the current Todoist project
+2. Composer extension that injects text into the composer
+3. Sample settings extension that displays a message in the integration settings
+
+## Local development
+
+### Local environment variables
 
 To tailor your dev environment, create a `.env` file and put in the relevant settings:
 
@@ -10,49 +17,56 @@ To tailor your dev environment, create a `.env` file and put in the relevant set
 -   `VERIFICATION_TOKENS`: This is a comma-separated list of valid tokens from https://todoist.com/app_console that will be used to verify the token has come from Todoist.
 -   `BASE_URL`: This is the domain for accessing static files (like images)
 
-## Running the integration
+## Run your integration service
 
-To install the dependencies using `npm install`, you first need to be authenticated to GitHub Packages, which might not be the case by default. See [here](https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages#authenticating-to-github-packages) for instructions.
-
-Once you have Github Packages authenticated, you need to run the following commands:
-
--   `npm install`
--   `npm run dev`
-
-_Alternatively, you can run `docker-compose up` which runs the server in-container._
+```shell
+npm install
+npm run dev
+```
 
 ### Environment setup
 
 Before you run the integration locally, copy `example.env ` as `.env`, and edit by adding necessary credentials (follow the comments inside the file).
 
-### Create Extensions
+## Expose your localhost
 
-In order to make this UI Extension available in Todoist, you need to set up a Todoist App:
+In order for Todoist to be able to communicate with your integration, we need to expose your service to the internet. There are a couple of tools available to create this kind of tunnel:
 
-1. Add a new App [here](https://todoist.com/app_console)
-2. Point "App Service URL" to `[BASE URL from .env]`
-2. From the `App settings` section, note _Verification token_, and add it to `.env` as `VERIFICATION_TOKENS`
-3. In the `OAuth Authentication` section, point `OAuth redirect URL` to `[BASE URL from .env]/auth`
-4. In the `UI Extensions` section, add a new extension:
-- For Context-Menu Extensions:
-    * Click "Add a new UI extension"
-    * Select "Context menu" as the "Extension type"
-    * Point "Data exchange endpoint URL" to `[BASE URL from .env]/process`
-5. In the `Installation` section, click on the `Install for me` button to install the extension
-6. Test the new extension, depending on the type of extension you added:
-- For Context-Menu Extensions: click on the context-menu in a Todoist task or project > Integrations > select the extension from the list
+- [`ngrok`](https://ngrok.com/)
+- [`localtunnel`](https://www.npmjs.com/package/localtunnel)
+- [`Cloudflare Tunnels`](https://www.cloudflare.com/en-gb/products/tunnel/)
 
-### Start Ngrok
+Make sure to start your tool of choice with the `PORT` from `.env`, for example `ngrok http 3000`.
 
-In order to access a locally running integration from the Twist or Todoist production or staging environment, make sure to start ngrok with the `PORT` from `.env`, for example `ngrok http -subdomain doister 3000`.
+For example, if you choose to use `ngrok`, you'll be running some variation of the following command (we chose to listen on port 3000):
 
-## Display the UI Extension
+Take note of the URL exposed by your tool of choice, as you'll need it in the next step (i.e. `https://my-extension-service`).
 
-Follow the instructions in the [`Create Todoist Extensions`](./../README.md#create-todoist-extensions) to setup and test your UI Extension. In particular:
+## Create a Todoist App
 
--   Add a new Context-Menu extension
--   Select the `data:read_write` scope
-    -   Note that scope `task:add` should be enough, but we'll see how it goes with https://github.com/Doist/Issues/issues/7882
--   Visit Todoist Web
--   Click a the context-menu of a project > Integrations > select the extension from the list
--   You should see new tasks getting added to the current project
+1. Visit the [App Management Console](https://todost.com/app_console) (you'll be prompted to log in if you're not already)
+2. Click "Create a new App" and insert a name in the "App name" field (i.e. "Lorem Ipsum")
+3. In the `UI Extensions` section, click "Add a new UI extension":
+    * Give it a name (i.e. "Add lorem ipsum tasks")
+    * Select "Context menu" as the "Extension type" (and "Project" as the "Context type") 
+    * Point "Data exchange endpoint URL" to your service URL followed by `/process` (or the endpoint name you chose when [creating your own integrations service](#create-your-own-integrations-service)). This value in this field might look something like `https://my-extension-service/process`
+4. In the `UI Extensions` section, click "Add a new UI extension":
+    * Give it a name (i.e. "Add lorem ipsum content")
+    * Select "Composer" as the "Extension type"
+    * Point "Data exchange endpoint URL" to your service URL followed by `/process` (or the endpoint name you chose when [creating your own integrations service](#create-your-own-integrations-service)). This value in this field might look something like `https://my-extension-service/process`
+5. In the `UI Extensions` section, click "Add a new settings extension":
+    * Give it a name (i.e. "Lorem ipsum settings")
+    * Point "Data exchange endpoint URL" to your service URL followed by `/process` (or the endpoint name you chose when [creating your own integrations service](#create-your-own-integrations-service)). This value in this field might look something like `https://my-extension-service/process`
+6. Select the `data:read_write` scope
+7. In the `Installation` section, click on the `Install for me` button
+
+## Use your UI Extension
+
+1. Visit [Todoist](https://todost.com)
+2. Select any of your Todoist projects (or create a new one)
+3. Click on the context menu icon of that project, select "Integrations" and finally select your UI Extension from the list (i.e. "Add lorem ipsum tasks")
+    - You should see...
+4. Click on 
+    - You should see...
+5. Click on 
+    - You should see...
