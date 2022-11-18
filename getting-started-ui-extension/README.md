@@ -33,7 +33,7 @@ Take note of the URL exposed by your tool of choice, as you'll need it in the ne
 
 1. Visit the [App Management Console](https://todost.com/app_console) (you'll be prompted to log in if you're not already)
 2. Click "Create a new App" and insert a name in the "App name" field (i.e. "My first app")
-3. In the `UI Extensions` section, click "Add a new UI extension" (it should look like the screenshot on the right):
+3. In the `UI Extensions` section, click "Add a new UI extension":
     * Give it a name (i.e. "Greet me!")
     * Select "Context menu" as the "Extension type" (and "Project" as the "Context type") 
     * Point "Data exchange endpoint URL" to your service URL followed by `/process` (or the endpoint name you chose when [creating your own integrations service](#create-your-own-integrations-service)). This value in this field might look something like `https://my-extension-service/process`

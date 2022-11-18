@@ -1,19 +1,15 @@
 import { DoistCard, DoistCardRequest, SubmitAction, TextBlock } from '@doist/ui-extensions-core'
-import bodyParser from 'body-parser'
 import express, { Request, Response, NextFunction } from 'express'
 
 const port = 3000
 const app = express()
-const jsonParser = bodyParser.json()
+app.use(express.json())
 
 const processRequest = async function (
     request: Request, response: Response, next: NextFunction
 ) {
     const doistRequest: DoistCardRequest = request.body as DoistCardRequest    
     const { action } = doistRequest
-
-    console.log(doistRequest.context.todoist)
-    console.log(doistRequest.context.todoist?.additionalUserContext)
 
     if (action.actionType === 'initial') {
         // Initial call to the UI Extension, 
@@ -67,7 +63,7 @@ const processRequest = async function (
     }
 }
 
-app.post('/process', jsonParser, processRequest)
+app.post('/process', processRequest)
 
 app.listen(port, () => {
     console.log(`UI Extension server running on port ${port}.`)
