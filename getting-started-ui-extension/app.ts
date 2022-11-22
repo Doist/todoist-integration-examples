@@ -12,6 +12,7 @@ const processRequest = async function (
     const { action } = doistRequest
 
     if (action.actionType === 'initial') {
+        
         // Initial call to the UI Extension, 
         // triggered by the user launching the extension
 

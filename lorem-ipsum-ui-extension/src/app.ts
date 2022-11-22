@@ -1,40 +1,46 @@
 import express, { Request, Response, NextFunction } from 'express'
-import bodyParser from 'body-parser'
+import { json } from 'body-parser'
 import dotenv from 'dotenv'
-import type { DoistCardRequest } from '@doist/ui-extensions-core'
-import { getAppToken } from './utils/app-token-utils'
+import { cloneBuffer, getAppToken, IncomingMessageWithRawBody, isRequestValid } from './utils/request-utils'
 import { ActionsService } from './services/actions.service'
+
+import type { DoistCardRequest } from '@doist/ui-extensions-core'
+import type { ServerResponse } from 'http'
 
 dotenv.config()
 const port = process.env.PORT
-const token = process.env.VERIFICATION_TOKEN
+const verificationToken = process.env.VERIFICATION_TOKEN
 
 const app = express()
-const jsonParser = bodyParser.json()
+
+// This following piece of code makes sure that we can access the request body as rawBody
+// (as well as in json format). The rawBody format is important to be able to validate
+// if the request comes from Todoist and not from a potentially malicious actor.
+app.use(
+    json({
+        verify: function rawBodyExtraction(
+            req: IncomingMessageWithRawBody,
+            _res: ServerResponse,
+            buf: Buffer,
+            _encoding: string,
+        ): boolean {
+            if (Boolean(req.headers['x-todoist-hmac-sha256']) && Buffer.isBuffer(buf)) {
+                req.rawBody = cloneBuffer(buf)
+            }
+            return true
+        },
+  })
+)
  
 const processPing = function (request: Request, response: Response, next: NextFunction) {
     response.send('pong')
 }
 
 const processRequest = async function (request: Request, response: Response, next: NextFunction) {
-
-    // TODO Use the methods in app-token-utils to validate that the incoming request actually comes from Todoist
-    // Something like the following code should work (to be cleaned and tested):
-    /**
-    import type { IncomingHttpHeaders } from 'http'
-
-    function isRequestValid(headers: IncomingHttpHeaders, 
-        yourVerificationToken: string): boolean {
-        
-        const hashedHeader = headers[ 'x-todoist-hmac-sha256']
-
-        const hashedRequest = CryptoJS.HmacSHA256(
-            buffer.toString('utf-8'), yourVerificationToken.trim(),
-        ).toString(CryptoJS.enc.Base64)
-
-        return hashedHeader === hashedRequest
+    console.log(verificationToken)
+    if (!verificationToken || !isRequestValid(request, verificationToken)) {
+        throw new Error('Request verification failed')
     }
-     */
 
     const appToken = getAppToken(request)
 
@@ -44,7 +50,7 @@ const processRequest = async function (request: Request, response: Response, nex
 }
 
 app.get('/ping', processPing)
-app.post('/process', jsonParser, processRequest)
+app.post('/process', processRequest)
 
 app.listen(port, () => {
     // tslint:disable-next-line:no-console
