@@ -48,14 +48,14 @@ Take note of the URL exposed by your tool of choice, as you'll need it in the ne
     1. In the `UI Extensions` section, click "Add a new UI extension":
         * Give it a name (i.e. "Add lorem ipsum tasks")
         * Select "Context menu" as the "Extension type" (and "Project" as the "Context type") 
-        * Point "Data exchange endpoint URL" to your service URL followed by `/process` (or the endpoint name you chose when [creating your own integrations service](#create-your-own-integrations-service)). This value in this field might look something like `https://my-extension-service/process`
+        * Point "Data exchange endpoint URL" to your service URL followed by `/process` (or the endpoint name you chose). This value in this field might look something like `https://my-extension-service/process`
     2. In the `UI Extensions` section, click "Add a new UI extension":
         * Give it a name (i.e. "Add lorem ipsum content")
         * Select "Composer" as the "Extension type"
-        * Point "Data exchange endpoint URL" to your service URL followed by `/process` (or the endpoint name you chose when [creating your own integrations service](#create-your-own-integrations-service)). This value in this field might look something like `https://my-extension-service/process`
+        * Point "Data exchange endpoint URL" to your service URL followed by `/process` (or the endpoint name you chose). This value in this field might look something like `https://my-extension-service/process`
     3. In the `UI Extensions` section, click "Add a new settings extension":
         * Give it a name (i.e. "Lorem ipsum settings")
-        * Point "Data exchange endpoint URL" to your service URL followed by `/process` (or the endpoint name you chose when [creating your own integrations service](#create-your-own-integrations-service)). This value in this field might look something like `https://my-extension-service/process`
+        * Point "Data exchange endpoint URL" to your service URL followed by `/process` (or the endpoint name you chose). This value in this field might look something like `https://my-extension-service/process`
 6. Select the `task:add` scope
 7. In the `Installation` section, click on the `Install for me` button
 
