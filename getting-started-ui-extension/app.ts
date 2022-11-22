@@ -37,7 +37,7 @@ const processRequest = async function (
         response.status(200).json({card: card})
 
     } else if (action.actionType === 'submit' && action.actionId === 'Action.Submit') {
-        // Sub-sequent call to the UI Extension, 
+        // Subsequent call to the UI Extension, 
         // triggered by clicking the 'Click me!' button
 
         // Prepare the response
