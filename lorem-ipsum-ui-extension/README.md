@@ -3,7 +3,7 @@
 Simple integration that includes different UI extensions:
 1. Project context menu UI extension to add lorem ipsum tasks to the current Todoist project
 2. Composer extension that injects lorem ipsum text into the composer
-3. Sample settings extension that displays a message in the integration settings
+3. Settings extension that displays a message in the integration settings
 
 ## Local development
 
