@@ -1,0 +1,11 @@
+node_modules/
+
+.env
+docker-compose.all.yml
+
+.DS_Store
+.vscode/
+
+# production
+**/build
+**/dist
