@@ -1,16 +1,20 @@
 # todoist-integration-examples
-This repository holds some code examples on how to build an integration for Todoist.
 
-# Extensions
+This repository holds some code examples on how to build Integrations and UI Extensions for Todoist.
 
-The extensions hosted in this repo belong to different types:
-- Composer Extensions: they are triggered in Twist or Todoist by typing `/`
-- Context-Menu Extensions: they can be chosen in Twist or Todoist within a context-menu
-- Settings Extensions: they are configured in Twist or Todoist via "Settings & members" > "Integrations"
+For more information about developing UI Extensions please see [our official guide](https://developer.todoist.com/ui-extensions).
 
 ## Repository structure
 
-# lorem-ipsum
+# getting-started-ui-extension
 
-Further details on the extension(s) can be read in [todoist-lorem-ipsum README](todoist-lorem-ipsum/README.md)).
+Simple integration that includes one project context menu UI extension that greets the user and ask them to click a button.
+
+Further details on the extension(s) can be read in the [README](getting-started-ui-extension/README.md)).
+
+# lorem-ipsum-ui-extension
+
+Simple integration that includes different UI extensions that take introduce lorem ipsum content into your Todoist projects and tasks.
+
+Further details on the extension(s) can be read in the [README](lorem-ipsum-ui-extension/README.md)).
 
