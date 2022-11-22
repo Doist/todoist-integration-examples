@@ -10,11 +10,11 @@ For more information about developing UI Extensions please see [our official gui
 
 Simple integration that includes one project context menu UI extension that greets the user and ask them to click a button.
 
-Further details on the extension(s) can be read in the [README](getting-started-ui-extension/README.md)).
+Further details on this extension can be found in the [README](getting-started-ui-extension/README.md)).
 
 ### lorem-ipsum-ui-extension
 
 Simple integration that includes different UI extensions that take introduce lorem ipsum content into your Todoist projects and tasks.
 
-Further details on the extension(s) can be read in the [README](lorem-ipsum-ui-extension/README.md)).
+Further details on this extension can be found in the [README](lorem-ipsum-ui-extension/README.md)).
 
