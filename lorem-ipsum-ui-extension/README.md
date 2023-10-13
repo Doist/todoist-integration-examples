@@ -42,7 +42,7 @@ Take note of the URL exposed by your tool of choice, as you'll need it in the ne
 
 ## Create a Todoist App
 
-1. Visit the [App Management Console](https://todost.com/app_console) (you'll be prompted to log in if you're not already)
+1. Visit the [App Management Console](https://todoist.com/app_console) (you'll be prompted to log in if you're not already)
 2. Click "Create a new app" and insert a name in the "App name" field (i.e. "Lorem Ipsum")
 3. Create three different UI Extensions:
     1. In the `UI Extensions` section, click "Add a new UI extension":
@@ -61,7 +61,7 @@ Take note of the URL exposed by your tool of choice, as you'll need it in the ne
 
 ## Use your UI Extension
 
-1. Visit [Todoist](https://todost.com)
+1. Visit [Todoist](https://todoist.com)
 2. Test your context menu extension:
     * Select any of your Todoist projects (or create a new one)
     * Click on the context menu icon of that project, select "Integrations" and finally select your UI Extension from the list (i.e. "Add lorem ipsum tasks")
