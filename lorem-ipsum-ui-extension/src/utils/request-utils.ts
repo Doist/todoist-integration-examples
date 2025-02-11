@@ -22,7 +22,10 @@ export function cloneBuffer(buf: Buffer): Buffer {
     return copy
 }
 
-export function isRequestValid(request: IncomingMessageWithRawBody, verificationToken: string): boolean {
+export function isRequestValid(
+    request: IncomingMessageWithRawBody,
+    verificationToken: string,
+): boolean {
     const requestHeaders = request.headers
     const requestBody = request.rawBody
 
@@ -36,8 +39,8 @@ export function isRequestValid(request: IncomingMessageWithRawBody, verification
     }
 
     const hashedRequest = CryptoJS.HmacSHA256(
-        requestBody.toString('utf-8'), 
-        verificationToken
+        requestBody.toString('utf-8'),
+        verificationToken,
     ).toString(CryptoJS.enc.Base64)
 
     return hashedHeader === hashedRequest

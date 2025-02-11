@@ -1,6 +1,7 @@
 # Lorem Ipsum UI Extension
 
 Simple integration that includes different UI extensions:
+
 1. Project context menu UI extension to add lorem ipsum tasks to the current Todoist project
 2. Composer extension that injects lorem ipsum text into the composer
 3. Settings extension that displays a message in the integration settings
@@ -11,11 +12,20 @@ Simple integration that includes different UI extensions:
 
 To tailor your dev environment, create a `.env` file and put in the relevant settings:
 
--   `PORT`: The port the backend will run on
--   `VERIFICATION_TOKENS`: This is a comma-separated list of valid tokens from https://todoist.com/app_console that will be used to verify the token has come from Todoist.
--   `BASE_URL`: This is the domain for accessing static files (like images)
+- `PORT`: The port the backend will run on
+- `VERIFICATION_TOKENS`: This is a comma-separated list of valid tokens from https://todoist.com/app_console that will be used to verify the token has come from Todoist.
+- `BASE_URL`: This is the domain for accessing static files (like images)
 
 ## Run your integration service
+
+Make sure you're using the right Node.js version:
+
+```shell
+nvm install
+nvm use
+```
+
+Install dependencies and run the integration:
 
 ```shell
 npm install
@@ -46,31 +56,31 @@ Take note of the URL exposed by your tool of choice, as you'll need it in the ne
 2. Click "Create a new app" and insert a name in the "App name" field (i.e. "Lorem Ipsum")
 3. Create three different UI Extensions:
     1. In the `UI Extensions` section, click "Add a new UI extension":
-        * Give it a name (i.e. "Add lorem ipsum tasks")
-        * Select "Context menu" as the "Extension type" (and "Project" as the "Context type") 
-        * Point "Data exchange endpoint URL" to your service URL followed by `/process` (or the endpoint name you chose). This value in this field might look something like `https://my-extension-service/process`
+        - Give it a name (i.e. "Add lorem ipsum tasks")
+        - Select "Context menu" as the "Extension type" (and "Project" as the "Context type")
+        - Point "Data exchange endpoint URL" to your service URL followed by `/process` (or the endpoint name you chose). This value in this field might look something like `https://my-extension-service/process`
     2. In the `UI Extensions` section, click "Add a new UI extension":
-        * Give it a name (i.e. "Add lorem ipsum content")
-        * Select "Composer" as the "Extension type"
-        * Point "Data exchange endpoint URL" to your service URL followed by `/process` (or the endpoint name you chose). This value in this field might look something like `https://my-extension-service/process`
+        - Give it a name (i.e. "Add lorem ipsum content")
+        - Select "Composer" as the "Extension type"
+        - Point "Data exchange endpoint URL" to your service URL followed by `/process` (or the endpoint name you chose). This value in this field might look something like `https://my-extension-service/process`
     3. In the `UI Extensions` section, click "Add a new settings extension":
-        * Give it a name (i.e. "Lorem ipsum settings")
-        * Point "Data exchange endpoint URL" to your service URL followed by `/process` (or the endpoint name you chose). This value in this field might look something like `https://my-extension-service/process`
-6. Select the `task:add` scope
-7. In the `Installation` section, click on the `Install for me` button
+        - Give it a name (i.e. "Lorem ipsum settings")
+        - Point "Data exchange endpoint URL" to your service URL followed by `/process` (or the endpoint name you chose). This value in this field might look something like `https://my-extension-service/process`
+4. Select the `task:add` scope
+5. In the `Installation` section, click on the `Install for me` button
 
 ## Use your UI Extension
 
-1. Visit [Todoist](https://todoist.com)
+1. Visit [Todoist](https://app.todoist.com/app)
 2. Test your context menu extension:
-    * Select any of your Todoist projects (or create a new one)
-    * Click on the context menu icon of that project, select "Integrations" and finally select your UI Extension from the list (i.e. "Add lorem ipsum tasks")
-    * You should see a few tasks being added to your current project
-4. Test your composer extension:
-    * Select any of your Todoist tasks (or create a new one)
-    * Click inside the comment composer, select "Add lorem ipsum content" in the composer extensions menu
-    * You should see content being injected into the composer
-5. Test your settings extension:
-    * Click on the profile picture menu > "Settings" > "Integrations"
-    * Click on the name of your app (i.e. "Lorem Ipsum"), then "Settings"
-    * You should see some custom text
+    - Select any of your Todoist projects (or create a new one)
+    - Click on the context menu icon of that project, select "Integrations" and finally select your UI Extension from the list (i.e. "Add lorem ipsum tasks")
+    - You should see a few tasks being added to your current project
+3. Test your composer extension:
+    - Select any of your Todoist tasks (or create a new one)
+    - Click inside the comment composer, select "Add lorem ipsum content" in the composer extensions menu
+    - You should see content being injected into the composer
+4. Test your settings extension:
+    - Click on the profile picture menu > "Settings" > "Integrations"
+    - Click on the name of your app (i.e. "Lorem Ipsum"), then "Settings"
+    - You should see some custom text
