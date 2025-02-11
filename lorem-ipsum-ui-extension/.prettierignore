@@ -1,5 +1,3 @@
 node_modules
 dist
 *.hbs
-twist-zoom/public/zoomverify/verifyzoom.html
-todoist-templates/aws/todoist-templates.yml

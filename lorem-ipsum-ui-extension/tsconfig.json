@@ -20,7 +20,8 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "sourceMap": true,
-        "incremental": true
+        "incremental": true,
+        "verbatimModuleSyntax": false
     },
     "include": ["src", "test"]
 }

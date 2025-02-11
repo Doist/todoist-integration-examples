@@ -1,7 +1,12 @@
 import express, { Request, Response, NextFunction } from 'express'
 import { json } from 'body-parser'
 import dotenv from 'dotenv'
-import { cloneBuffer, getAppToken, IncomingMessageWithRawBody, isRequestValid } from './utils/request-utils'
+import {
+    cloneBuffer,
+    getAppToken,
+    IncomingMessageWithRawBody,
+    isRequestValid,
+} from './utils/request-utils'
 import { ActionsService } from './services/actions.service'
 
 import type { DoistCardRequest } from '@doist/ui-extensions-core'
@@ -29,15 +34,14 @@ app.use(
             }
             return true
         },
-  })
+    }),
 )
- 
+
 const processPing = function (request: Request, response: Response, next: NextFunction) {
     response.send('pong')
 }
 
 const processRequest = async function (request: Request, response: Response, next: NextFunction) {
-    console.log(verificationToken)
     if (!verificationToken || !isRequestValid(request, verificationToken)) {
         throw new Error('Request verification failed')
     }
@@ -55,4 +59,4 @@ app.post('/process', processRequest)
 app.listen(port, () => {
     // tslint:disable-next-line:no-console
     console.log(`Lorem Ipsum UI Extension server running on port ${port}.`)
-});
+})
