@@ -6,7 +6,7 @@ import type {
 
 import { AdaptiveCardService } from './adaptive-card.service'
 
-import { TodoistApi } from '@doist/todoist-api-typescript'
+import { TodoistApi } from '@doist/todoist-sdk'
 
 import { loremIpsum } from 'lorem-ipsum'
 
